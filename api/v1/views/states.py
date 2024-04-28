@@ -9,7 +9,7 @@ from models import storage
 from models.state import State
 
 
-@app_views.route('/states/', methods=['GET', 'POST'], strict_slahses=False)
+@app_views.route('/states/', methods=['GET', 'POST'], strict_slashes=False)
 def states():
     """ Return a list of states """
     if request.method == 'GET':
