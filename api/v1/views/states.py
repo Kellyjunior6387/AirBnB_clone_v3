@@ -14,7 +14,8 @@ def states():
     """ Return a list of states """
     if request.method == 'GET':
         states = storage.all("State").values()
-        return jsonify(state.to_dict() for state in states)
+        all_states = list(state.to_dict() for state in states)
+        return jsonify(all_states)
     elif request.method == 'POST':
         my_dict = request.get_json()
         if not my_dict:
