@@ -23,7 +23,7 @@ def states():
             abort(400, "Missing name")
         new_state = State(**my_dict)
         new_state.save()
-        return jsonify([new_state.to_dict()]), 201
+        return jsonify(new_state.to_dict()), 201
 
 
 @app_views.route('/states/<state_id>', methods=['GET', 'DELETE', 'PUT'],
@@ -49,4 +49,4 @@ def state(state_id):
         for key, value in data.items():
             setattr(state, key, value)
         state.save()
-        return jsonify([state.to_dict()]), 200
+        return jsonify(state.to_dict()), 200
