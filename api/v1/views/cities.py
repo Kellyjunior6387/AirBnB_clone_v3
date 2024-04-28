@@ -19,7 +19,8 @@ def cities(state_id):
         abort(404)
     if request.method == 'GET':
         cities = state.cities
-        return jsonify([city.to_dict() for city in cities])
+        cities = list(city.to_dict() for city in cities)
+        return jsonify(cities)
     elif request.method == 'POST':
         data = request.get_json()
         if not data:
@@ -54,4 +55,4 @@ def get_city(city_id):
         for key, value in data.items():
             setattr(city, key, value)
         city.save()
-        return jsonify([city.to_dict()]), 200
+        return jsonify(city.to_dict()), 200
