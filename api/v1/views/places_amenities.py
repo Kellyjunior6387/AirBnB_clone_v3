@@ -13,7 +13,7 @@ from models import storage
 STORAGE_TYPE = environ.get('HBNB_TYPE_STORAGE')
 
 
-@app_views.route('places/<place_id>/amenities', method=['GET'],
+@app_views.route('places/<place_id>/amenities', methods=['GET'],
                  strict_slashes=False)
 def get_amenities(place_id):
     place = storage.get(Place, place_id)
@@ -29,7 +29,7 @@ def get_amenities(place_id):
     return jsonify(amenities)
 
 
-@app_views.route('places/<places_id>/amenities/<amenities_id>',
+@app_views.route('places/<place_id>/amenities/<amenity_id>',
                  methods=['DELETE', 'POST'], strict_slashes=False)
 def link_or_unlink_amenity(place_id, amenity_id):
     place = storage.get(Place, place_id)
