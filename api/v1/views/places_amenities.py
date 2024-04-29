@@ -7,7 +7,7 @@
 from os import environ
 from api.v1.views import app_views
 from flask import jsonify, abort, request
-from models.place import Place, place_amenity
+from models.place import Place
 from models.amenity import Amenity
 from models import storage
 STORAGE_TYPE = environ.get('HBNB_TYPE_STORAGE')
