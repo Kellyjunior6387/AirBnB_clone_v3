@@ -20,8 +20,10 @@ def users():
         my_dict = request.get_json()
         if not my_dict:
             abort(400, "Not a JSON")
-        if "name" not in my_dict.keys():
-            abort(400, "Missing name")
+        if "email" not in my_dict:
+            abort(400, "Missing email")
+        if "password" not in my_dict:
+            abort(400, "Missing password")
         new_user = User(**my_dict)
         new_user.save()
         return jsonify(new_user.to_dict()), 201
@@ -47,6 +49,7 @@ def user(user_id):
         data.pop('id', None)
         data.pop('created_at', None)
         data.pop('updated_at', None)
+        data.pop('email', None)
         for key, value in data.items():
             setattr(user, key, value)
         user.save()
