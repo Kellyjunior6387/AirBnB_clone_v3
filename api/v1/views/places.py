@@ -70,7 +70,8 @@ def get_place(place_id):
 
 @app_views.route('/places_search', methods=['POST'], strict_slashes=False)
 def place_search():
-    """Retrieves all Place objects depending on the JSON in the request body."""
+    """Retrieves all Place objects depending on the JSON
+    in the request body."""
     if request.get_json() is None:
         abort(400, description="Not a JSON")
 
